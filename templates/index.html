@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <a type="button" class="btn btn-outline-primary" href="{{url_for('add_task')}}">New Plan</a>
+    <br>
+    <p>Make a plan and complete it.</p>
+    <br>
+    <table class="table table-striped table-hover">
+        <tr>
+            <thead>
+                
+                <th>Period</th>
+                <th>Plan</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+
+            </thead>
+        </tr>
+        {% for task in tasks %}
+
+        <tr>
+            <tbody>
+                
+                <td>{{task.period}}</td>
+                <td>{{task.task}}</td>
+                <td>{{task.status}}</td>
+                <td><a href="/update/{{task.id}}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="/delete/{{task.id}}"><i class="fas fa-trash-alt"></i></a></td>
+
+            </tbody>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}
