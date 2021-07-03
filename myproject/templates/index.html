@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<div class="container">
+  <br>
+  <p> Make a plan and complete it.</p>
+  <br>
+  <a type="button" class="btn btn-outline-primary" href="{{url_for('tasks.add_task')}}">New Plan</a>
+  <br>
+  <br>
+
+  <a type="button" class="btn btn-outline-primary"
+    href="{{url_for('users.user_tasks', username=current_user.username)}}">View Plan</a>
+  <br>
+</div>
+
+{% else %}
+<div class="container">
+  <p>Let's make 30/60/90 plans! Please login or register!</p>
+  <br>
+  <a class='btn btn-primary btn-sm' href="{{ url_for('users.login') }}">Log In</a></li>
+  <a class="btn btn-primary btn-sm" href="{{ url_for('users.register') }}">Register</a></li>
+</div>
+
+{% endif %}
+{% endblock %}
